@@ -1,62 +1,49 @@
-const slides = [
-  { kicker: "THE HUMAN TRUTH", title: "A business should not have to stop before it can start.", copy: "In one familiar three-minute wait, an eligible business could receive its account number and begin a guided relationship with us.", stat: "3 MIN", label: "a memorable first moment" },
-  { kicker: "THE TRUST SHIFT", title: "Trust is not one checkpoint. It grows at every milestone.", copy: "We ask only what is needed for the next safe step, show customers what is happening, and progressively open more value as confidence grows on both sides.", stat: "ONE PATH", label: "visible from start to growth" },
-  { kicker: "THE NEW JOURNEY", title: "Start now. Unlock progressively. Grow continuously.", copy: "Digital identity, essential business information and initial checks create the first account. Services, limits and capabilities then expand around real business needs.", stat: "1 → ∞", label: "one start, a lifetime relationship" },
-  { kicker: "THE LIVING RELATIONSHIP", title: "KYC becomes a quiet, ongoing conversation.", copy: "Consent-based data and timely prompts keep the business profile current—replacing the annual-review surprise with small, relevant actions when something changes.", stat: "ALWAYS READY", label: "less disruption, clearer control" },
-  { kicker: "HUMAN + DIGITAL", title: "Automation creates more space for relationships.", copy: "Routine verification happens intelligently in the background, while relationship managers focus on advice, connections and the moments where human judgment matters most.", stat: "MORE HUMAN", label: "where it matters" },
-  { kicker: "THE FUTURE BANK", title: "A bank that learns with the business—not one that waits to be asked.", copy: "Always-on intelligence recognises business signals, offers the next relevant action and connects customers to useful solutions and ecosystems—with transparency and customer control.", stat: "24 / 7", label: "relevant, responsible support" },
-  { kicker: "THE ASK", title: "Pilot one golden journey. Prove a lifetime of value.", copy: "Begin with one eligible segment, test the three-minute moment and measure readiness, progression, confidence and relationship depth before scaling responsibly.", stat: "PILOT", label: "learn fast, earn trust" }
+const iconPaths = {
+  coffee:["M5 8h11v6a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V8Z","M16 10h2a3 3 0 0 1 0 6h-3","M8 5c0-1 1-1 1-2","M12 5c0-1 1-1 1-2"],
+  elevator:["M5 3h14v18H5z","M9 8V5m0 0L7 7m2-2 2 2","M15 16v3m0 0-2-2m2 2 2-2"],
+  ride:["M5 16h14l-1.5-6h-11z","M7 10l2-4h6l2 4","M7 16v2m10-2v2","M8 13h1m6 0h1"],
+  account:["M3 6h18v12H3z","M3 10h18","M7 15h4"],
+  identity:["M12 3a7 7 0 0 0-7 7c0 5-2 7-2 7","M12 6a4 4 0 0 0-4 4c0 4-1 6-2 8","M12 9a1 1 0 0 0-1 1c0 5-1 8-2 10","M15 7c1 1 2 2 2 4 0 4-1 7-2 10","M19 9c1 4 0 8-1 11"],
+  lightning:["M13 2 5 14h7l-1 8 8-12h-7z"], unlock:["M7 10V7a5 5 0 0 1 9-3","M5 10h14v11H5z","M12 14v3"],
+  growth:["M4 18 10 12l4 4 6-8","M15 8h5v5"], visibility:["M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12Z","M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"],
+  refresh:["M20 7V3l-3 3a8 8 0 1 0 2 9","M4 17v4l3-3"], people:["M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z","M2 21v-2a6 6 0 0 1 12 0v2","M17 4a4 4 0 0 1 0 7","M16 14a6 6 0 0 1 6 5v2"],
+  insight:["M12 2v3m0 14v3M2 12h3m14 0h3M5 5l2 2m10 10 2 2m0-14-2 2M7 17l-2 2","M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"],
+  permission:["M12 3 4 6v5c0 5 3 8 8 10 5-2 8-5 8-10V6z","m9 12 2 2 4-5"], profile:["M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z","M4 21a8 8 0 0 1 16 0"],
+  trade:["M4 8h15m0 0-3-3m3 3-3 3","M20 16H5m0 0 3-3m-3 3 3 3"], digital:["M4 5h16v12H4z","M8 21h8","M12 17v4","M8 9h8m-8 4h5"],
+  food:["M6 3v8m3-8v8M4 7h7M7 11v10","M17 3v18","M17 3c4 3 4 7 0 10"], services:["M14 4 4 14l6 6 10-10","M13 5l3-3 6 6-3 3"],
+  tech:["M7 7h10v10H7z","M9 2v3m3-3v3m3-3v3M9 19v3m3-3v3m3-3v3M2 9h3m-3 3h3m-3 3h3m14-6h3m-3 3h3m-3 3h3"],
+  manufacturing:["M4 21V9l5 3V8l5 3V6l6 4v11z","M8 17h2m3 0h2m3 0h1"], health:["M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"], property:["M3 11 12 3l9 8","M5 10v11h14V10","M9 21v-6h6v6"],
+  banking:["M3 9 12 3l9 6","M5 10v8m5-8v8m4-8v8m5-8v8","M3 21h18M4 18h16"], payments:["M3 6h18v12H3z","M3 10h18","M16 14h2"],
+  wealth:["M4 18 9 13l3 3 7-9","M15 7h4v4","M4 21h16"], finance:["M12 2v20","M17 6H9a3 3 0 0 0 0 6h6a3 3 0 0 1 0 6H7"],
+  global:["M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z","M2 12h20","M12 2c3 3 4 7 4 10s-1 7-4 10c-3-3-4-7-4-10s1-7 4-10Z"]
+};
+
+function icon(name) {
+  const paths=(iconPaths[name]||iconPaths.insight).map(d=>`<path d="${d}"></path>`).join("");
+  return `<svg class="visualIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
+}
+
+function hydrateIcons(root=document){root.querySelectorAll("[data-icon]").forEach(el=>{el.innerHTML=icon(el.dataset.icon);});}
+window.NextGem={icon,hydrateIcons};
+hydrateIcons();
+
+const slides=[
+  {kicker:"THE HUMAN TRUTH",title:"A business should not have to stop before it can start.",copy:"In one familiar three-minute wait, an eligible business could receive its account number and begin a guided relationship with us.",stat:"3 MIN",label:"a memorable first moment"},
+  {kicker:"THE TRUST SHIFT",title:"Trust is not one checkpoint. It grows at every milestone.",copy:"Ask only what is needed for the next safe step, show what is happening and progressively open more value as confidence grows on both sides.",stat:"ONE PATH",label:"visible from start to growth"},
+  {kicker:"THE NEW JOURNEY",title:"Start now. Unlock progressively. Grow continuously.",copy:"Digital identity, essential information and initial checks create the first account. Services then expand around real business needs.",stat:"1 → ∞",label:"one start, a lifetime relationship"},
+  {kicker:"THE LIVING RELATIONSHIP",title:"KYC becomes a quiet, ongoing conversation.",copy:"Consent-based data and timely prompts keep the profile current—replacing the annual-review surprise with small, relevant actions.",stat:"ALWAYS READY",label:"less disruption, clearer control"},
+  {kicker:"HUMAN + DIGITAL",title:"Automation creates more space for relationships.",copy:"Routine verification happens intelligently while people focus on advice, connection and the moments where judgment matters most.",stat:"MORE HUMAN",label:"where it matters"},
+  {kicker:"THE FUTURE BANK",title:"Learn with the business—not only when asked.",copy:"Responsible intelligence recognises business signals and offers the next useful action—with transparency and customer control.",stat:"24 / 7",label:"relevant, responsible support"},
+  {kicker:"THE ASK",title:"Pilot one golden journey. Prove a lifetime of value.",copy:"Begin with one eligible segment, test the three-minute moment and measure readiness, confidence and relationship depth before scaling.",stat:"PILOT",label:"learn fast, earn trust"}
 ];
 
-let currentSlide = 0;
-const overlay = document.getElementById("pitchOverlay");
-const progress = document.getElementById("pitchProgress");
-const next = document.getElementById("pitchNext");
-const prev = document.getElementById("pitchPrev");
-const finish = document.getElementById("pitchFinish");
-
-progress.innerHTML = slides.map(() => "<i></i>").join("");
-
-function renderSlide() {
-  const item = slides[currentSlide];
-  document.getElementById("pitchKicker").textContent = item.kicker;
-  document.getElementById("pitchTitle").textContent = item.title;
-  document.getElementById("pitchCopy").textContent = item.copy;
-  document.getElementById("pitchStat").textContent = item.stat;
-  document.getElementById("pitchLabel").textContent = item.label;
-  document.getElementById("pitchCount").textContent = `${String(currentSlide + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`;
-  [...progress.children].forEach((bar, index) => bar.classList.toggle("done", index <= currentSlide));
-  prev.disabled = currentSlide === 0;
-  const isLast = currentSlide === slides.length - 1;
-  next.hidden = isLast;
-  finish.hidden = !isLast;
-  const content = document.getElementById("pitchContent");
-  content.style.animation = "none";
-  requestAnimationFrame(() => { content.style.animation = ""; });
+const overlay=document.getElementById("pitchOverlay");
+if(overlay){
+  let current=0;const progress=document.getElementById("pitchProgress"),next=document.getElementById("pitchNext"),prev=document.getElementById("pitchPrev"),finish=document.getElementById("pitchFinish");
+  progress.innerHTML=slides.map(()=>"<i></i>").join("");
+  function render(){const item=slides[current];document.getElementById("pitchKicker").textContent=item.kicker;document.getElementById("pitchTitle").textContent=item.title;document.getElementById("pitchCopy").textContent=item.copy;document.getElementById("pitchStat").textContent=item.stat;document.getElementById("pitchLabel").textContent=item.label;document.getElementById("pitchCount").textContent=`${String(current+1).padStart(2,"0")} / ${String(slides.length).padStart(2,"0")}`;[...progress.children].forEach((bar,index)=>bar.classList.toggle("done",index<=current));prev.disabled=current===0;next.hidden=current===slides.length-1;finish.hidden=current!==slides.length-1;}
+  function open(){current=0;overlay.hidden=false;document.body.classList.add("pitch-open");render();document.getElementById("closePitch").focus();}
+  function close(){overlay.hidden=true;document.body.classList.remove("pitch-open");}
+  document.querySelectorAll("[data-start-pitch]").forEach(button=>button.addEventListener("click",open));document.getElementById("closePitch").addEventListener("click",close);finish.addEventListener("click",close);next.addEventListener("click",()=>{if(current<slides.length-1){current++;render();}});prev.addEventListener("click",()=>{if(current>0){current--;render();}});
+  document.addEventListener("keydown",event=>{if(overlay.hidden)return;if(event.key==="Escape")close();if(event.key==="ArrowRight"&&current<slides.length-1){current++;render();}if(event.key==="ArrowLeft"&&current>0){current--;render();}});
 }
-
-function openPitch() {
-  currentSlide = 0;
-  overlay.hidden = false;
-  document.body.classList.add("pitch-open");
-  renderSlide();
-  document.getElementById("closePitch").focus();
-}
-
-function closePitch() {
-  overlay.hidden = true;
-  document.body.classList.remove("pitch-open");
-}
-
-document.querySelectorAll("[data-start-pitch]").forEach(button => button.addEventListener("click", openPitch));
-document.getElementById("closePitch").addEventListener("click", closePitch);
-finish.addEventListener("click", closePitch);
-next.addEventListener("click", () => { if (currentSlide < slides.length - 1) { currentSlide += 1; renderSlide(); } });
-prev.addEventListener("click", () => { if (currentSlide > 0) { currentSlide -= 1; renderSlide(); } });
-
-document.addEventListener("keydown", event => {
-  if (overlay.hidden) return;
-  if (event.key === "Escape") closePitch();
-  if (event.key === "ArrowRight" && currentSlide < slides.length - 1) { currentSlide += 1; renderSlide(); }
-  if (event.key === "ArrowLeft" && currentSlide > 0) { currentSlide -= 1; renderSlide(); }
-});

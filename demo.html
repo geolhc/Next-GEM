@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Interactive fictional customer demo for the Next GEM future business banking concept.">
+  <title>Customer Demo — Next GEM</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="demoPage">
+  <header class="demoHeader">
+    <a class="brand" href="index.html" aria-label="Back to Next GEM pitch"><span class="logoWords"><b><span>Next</span><em>GEM</em></b><small>GREATER · EASIER · MORE</small></span><span class="gemMark" aria-hidden="true"><i></i><i></i><i></i></span></a>
+    <div><span>Fictional scenario · No data collected</span><a href="index.html">Back to pitch</a></div>
+  </header>
+  <div class="demoShell">
+    <aside class="demoRail">
+      <div class="railIntro"><p>YOUR JOURNEY</p><h1>Start now.<br><em>Grow as you go.</em></h1><span>Experience a future onboarding journey in about two minutes.</span></div>
+      <ol id="journeyRail"></ol>
+      <div class="demoTrust"><span>♡</span><p><b>You stay in control</b>Every request explains what it enables.</p></div>
+    </aside>
+    <section class="demoStage" aria-live="polite">
+      <div class="demoTopline"><span>DEMO MODE</span><p id="stepCount">Step 1 of 5</p></div>
+      <div id="demoPanel" class="demoPanel"></div>
+    </section>
+  </div>
+  <script src="script.js"></script>
+  <script src="demo.js"></script>
+</body>
+</html>
