@@ -1,34 +1,33 @@
-# Next GEM — GitHub Pages Edition
+# Next GEM — GitHub Pages pack
 
-A static, upload-ready version of the Next GEM pitch and customer demo. It requires no installation, build command, server or paid hosting.
+This pack contains the current Next GEM pitch and interactive customer demo.
 
-## Upload and publish
+## Replace the existing GitHub version
 
-1. Create a new GitHub repository named `next-gem`.
-2. Choose **Public** so teammates can open the final link directly.
-3. Upload **all extracted files** directly to the repository root.
-4. Open **Settings → Pages**.
-5. Under **Build and deployment**, choose **Deploy from a branch**.
-6. Select branch `main` and folder `/ (root)`, then click **Save**.
-7. Wait 1–3 minutes, then refresh the Pages settings screen.
+1. Back up the current repository if needed.
+2. Delete the old website files in the repository, except any files you want to keep.
+3. Upload **all files and folders from this pack** to the repository root.
+4. Commit the upload to the `main` branch.
+5. Open **Settings → Pages** and set **Source** to **GitHub Actions**.
+6. Open the **Actions** tab and wait for “Deploy Next GEM to GitHub Pages” to finish.
+7. Refresh the GitHub Pages link.
 
-The shareable link will normally be:
+The deployment automatically supports both `username.github.io` repositories and normal project repositories such as `username.github.io/next-gem/`.
 
-`https://YOUR-USERNAME.github.io/next-gem/`
+## Included experience
 
-## Important
+- Simplified Next GEM landing page and pitch mode
+- Interactive seven-stage customer demo
+- AI-guided journey and responsive assistant layout
+- English, Traditional Chinese and Simplified Chinese demo
+- Business profile, personal profile reuse or manual entry
+- Company ID and director information
+- Document-pack, ID/selfie and business-address verification
+- Selective video verification
+- Masked account numbers
+- AI-tailored Grow recommendations and people-behind-the-business journeys
+- Responsive desktop and mobile layouts
 
-- Upload the extracted files, not the ZIP itself.
-- `index.html` must appear at the repository root, not inside another folder.
-- The customer demo uses fictional information and stores or submits no data.
-- The masked sample account is `***-******-838`.
-- This concept is for internal discussion. Validate eligibility, speed, compliance and service statements before any external use.
+## Safety note
 
-## Files
-
-- `index.html` — pitch website and five-minute presentation mode
-- `demo.html` — interactive customer journey
-- `styles.css` — desktop and mobile design
-- `script.js` — icons and pitch interactions
-- `demo.js` — customer-demo interactions
-- `favicon.svg` — Next GEM browser icon
+This is a fictional prototype. Do not upload real identity, customer or business documents while presenting it.

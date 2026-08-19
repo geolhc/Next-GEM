@@ -1,0 +1,40 @@
+const paths: Record<string, string[]> = {
+  coffee: ["M5 8h11v6a5 5 0 0 1-5 5H10a5 5 0 0 1-5-5V8Z", "M16 10h2a3 3 0 0 1 0 6h-3", "M8 5c0-1 1-1 1-2", "M12 5c0-1 1-1 1-2"],
+  elevator: ["M5 3h14v18H5z", "M9 8V5m0 0L7 7m2-2 2 2", "M15 16v3m0 0-2-2m2 2 2-2"],
+  ride: ["M5 16h14l-1.5-6h-11z", "M7 10l2-4h6l2 4", "M7 16v2m10-2v2", "M8 13h1m6 0h1"],
+  account: ["M3 6h18v12H3z", "M3 10h18", "M7 15h4"],
+  identity: ["M12 3a7 7 0 0 0-7 7c0 5-2 7-2 7", "M12 6a4 4 0 0 0-4 4c0 4-1 6-2 8", "M12 9a1 1 0 0 0-1 1c0 5-1 8-2 10", "M15 7c1 1 2 2 2 4 0 4-1 7-2 10", "M19 9c1 4 0 8-1 11"],
+  lightning: ["M13 2 5 14h7l-1 8 8-12h-7z"],
+  unlock: ["M7 10V7a5 5 0 0 1 9-3", "M5 10h14v11H5z", "M12 14v3"],
+  growth: ["M4 18 10 12l4 4 6-8", "M15 8h5v5"],
+  visibility: ["M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12Z", "M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"],
+  refresh: ["M20 7V3l-3 3a8 8 0 1 0 2 9", "M4 17v4l3-3"],
+  people: ["M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z", "M2 21v-2a6 6 0 0 1 12 0v2", "M17 4a4 4 0 0 1 0 7", "M16 14a6 6 0 0 1 6 5v2"],
+  insight: ["M12 2v3m0 14v3M2 12h3m14 0h3M5 5l2 2m10 10 2 2m0-14-2 2M7 17l-2 2", "M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"],
+  permission: ["M12 3 4 6v5c0 5 3 8 8 10 5-2 8-5 8-10V6z", "m9 12 2 2 4-5"],
+  profile: ["M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z", "M4 21a8 8 0 0 1 16 0"],
+  relationship: ["M12 21s-8-5-8-11a4 4 0 0 1 7-3 4 4 0 0 1 7 3c0 6-6 10-6 11Z"],
+  trade: ["M4 8h15m0 0-3-3m3 3-3 3", "M20 16H5m0 0 3-3m-3 3 3 3"],
+  digital: ["M4 5h16v12H4z", "M8 21h8", "M12 17v4", "M8 9h8m-8 4h5"],
+  food: ["M6 3v8m3-8v8M4 7h7M7 11v10", "M17 3v18", "M17 3c4 3 4 7 0 10"],
+  services: ["M14 4 4 14l6 6 10-10", "M13 5l3-3 6 6-3 3"],
+  tech: ["M7 7h10v10H7z", "M9 2v3m3-3v3m3-3v3M9 19v3m3-3v3m3-3v3M2 9h3m-3 3h3m-3 3h3m14-6h3m-3 3h3m-3 3h3"],
+  manufacturing: ["M4 21V9l5 3V8l5 3V6l6 4v11z", "M8 17h2m3 0h2m3 0h1"],
+  health: ["M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"],
+  property: ["M3 11 12 3l9 8", "M5 10v11h14V10", "M9 21v-6h6v6"],
+  banking: ["M3 9 12 3l9 6", "M5 10v8m5-8v8m4-8v8m5-8v8", "M3 21h18M4 18h16"],
+  payments: ["M3 6h18v12H3z", "M3 10h18", "M16 14h2"],
+  wealth: ["M4 18 9 13l3 3 7-9", "M15 7h4v4", "M4 21h16"],
+  finance: ["M12 2v20", "M17 6H9a3 3 0 0 0 0 6h6a3 3 0 0 1 0 6H7"],
+  global: ["M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z", "M2 12h20", "M12 2c3 3 4 7 4 10s-1 7-4 10c-3-3-4-7-4-10s1-7 4-10Z"],
+  sparkle: ["m12 2 1.5 5.5L19 9l-5.5 1.5L12 16l-1.5-5.5L5 9l5.5-1.5Z", "m19 15 .7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7Z"],
+  link: ["M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1", "M14 11a5 5 0 0 0-7.1 0l-2 2A5 5 0 0 0 12 20.1l1.1-1.1"],
+  chat: ["M4 4h16v12H9l-5 4Z", "M8 9h8m-8 3h5"],
+  privacy: ["M12 3 5 6v5c0 4.5 2.6 7.3 7 9 4.4-1.7 7-4.5 7-9V6Z", "M9 12h6", "M12 9v6"],
+  document: ["M6 2h8l4 4v16H6Z", "M14 2v5h5", "M9 12h6m-6 4h6"],
+};
+
+export function VisualIcon({ name, className = "" }: { name: string; className?: string }) {
+  const iconPaths = paths[name] ?? paths.insight;
+  return <svg className={`visualIcon ${className}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{iconPaths.map((d, index) => <path d={d} key={index} />)}</svg>;
+}
