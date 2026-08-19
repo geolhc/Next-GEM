@@ -1,33 +1,34 @@
-# Next GEM — GitHub Pages pack
+# Next GEM — GitHub replacement pack
 
-This pack contains the current Next GEM pitch and interactive customer demo.
+This package is rebuilt from the current live Next GEM source, version 17, at:
 
-## Replace the existing GitHub version
+https://project-new-gem.geolhc.chatgpt.site/
 
-1. Back up the current repository if needed.
-2. Delete the old website files in the repository, except any files you want to keep.
-3. Upload **all files and folders from this pack** to the repository root.
-4. Commit the upload to the `main` branch.
-5. Open **Settings → Pages** and set **Source** to **GitHub Actions**.
-6. Open the **Actions** tab and wait for “Deploy Next GEM to GitHub Pages” to finish.
-7. Refresh the GitHub Pages link.
+## Replace the GitHub version
 
-The deployment automatically supports both `username.github.io` repositories and normal project repositories such as `username.github.io/next-gem/`.
+1. Remove the old website files from the repository root. Keep only anything unrelated that you intentionally need.
+2. Upload **every file and folder inside this package** to the repository root, including `.github`.
+3. Commit to the `main` branch.
+4. In **Settings → Pages**, set **Source** to **GitHub Actions**.
+5. Open **Actions** and wait for **Deploy Next GEM to GitHub Pages** to finish successfully.
+6. Open the Pages URL and hard refresh once (`Ctrl+Shift+R` on Windows).
 
-## Included experience
+Do not upload the outer `Next-GEM-GitHub-Pack-v17` folder as a nested folder. Its contents must sit at the repository root.
 
-- Simplified Next GEM landing page and pitch mode
-- Interactive seven-stage customer demo
-- AI-guided journey and responsive assistant layout
-- English, Traditional Chinese and Simplified Chinese demo
-- Business profile, personal profile reuse or manual entry
-- Company ID and director information
-- Document-pack, ID/selfie and business-address verification
+## Matching features
+
+- Simplified landing page and three-part pitch mode
+- Full seven-stage AI-guided customer demo
+- English, Traditional Chinese and Simplified Chinese
+- Connect-profile or manual personal-information route
+- Company ID, CEO/director and fictional official-record matching
+- KYC document pack, ID/selfie and business-address evidence
 - Selective video verification
-- Masked account numbers
-- AI-tailored Grow recommendations and people-behind-the-business journeys
-- Responsive desktop and mobile layouts
+- Masked personal and business account numbers
+- AI-tailored business-card and solution recommendations
+- People-behind-the-business personal journeys
+- Responsive assistant and layouts for desktop and mobile
 
-## Safety note
+## Important
 
 This is a fictional prototype. Do not upload real identity, customer or business documents while presenting it.
