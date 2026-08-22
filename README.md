@@ -54,6 +54,20 @@ The deployable static website is generated in `dist/`.
 
 The workflow in `.github/workflows/deploy-pages.yml` builds and publishes the site automatically after each push to `main`.
 
+## Update an existing GitHub repository
+
+Do not create a new branch. This deployment workflow publishes only from `main`.
+
+1. Keep the repository and its `.git` history.
+2. In the repository root, replace the old website files with the contents of this pack.
+3. Make sure `.github/workflows/deploy-pages.yml`, `package.json`, `src/`, and `public/` are all at the repository root—not inside a `Next-GEM-GitHub-Pack` subfolder.
+4. Commit the changes to `main` and push.
+5. In **Settings → Pages**, set **Source** to **GitHub Actions**.
+6. In **Actions**, confirm **Deploy Next GEM to GitHub Pages** finishes with a green check.
+7. Hard-refresh the published page (`Ctrl+Shift+R`) or test it in an incognito window.
+
+You may remove old website source files that are no longer in this pack, but do not delete the repository or its `.git` folder.
+
 ## Routes
 
 - Pitch: `#/`
