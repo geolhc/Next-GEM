@@ -1,4 +1,0 @@
-Next GEM live source version: 17
-Live URL: https://project-new-gem.geolhc.chatgpt.site/
-Prepared: 2026-08-19
-Source commit: a547610
