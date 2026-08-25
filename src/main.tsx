@@ -1,26 +1,26 @@
-import { StrictMode, useEffect, useState } from "react";
+import React from "react";
 import { createRoot } from "react-dom/client";
 import Home from "./Home";
 import Demo from "./Demo";
 import "./styles.css";
 
 function App() {
-  const [route, setRoute] = useState(window.location.hash);
+  const [route, setRoute] = React.useState(window.location.hash);
 
-  useEffect(() => {
-    const updateRoute = () => {
+  React.useEffect(() => {
+    const onHashChange = () => {
       setRoute(window.location.hash);
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: "instant" });
     };
-    window.addEventListener("hashchange", updateRoute);
-    return () => window.removeEventListener("hashchange", updateRoute);
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
 
   return route.startsWith("#/demo") ? <Demo /> : <Home />;
 }
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
+  <React.StrictMode>
     <App />
-  </StrictMode>,
+  </React.StrictMode>,
 );

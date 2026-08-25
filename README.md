@@ -1,87 +1,44 @@
-# Next GEM — Business Banking Onboarding
+# Next GEM — GitHub Pages Pack
 
-GitHub-ready version of the Next GEM pitch website and interactive customer demo.
+Latest packaged version: **v25**
 
-## Included
+This repository contains two presentation destinations:
 
-- Final holographic Next GEM branding and full wordmark
-- One-screen elevator-pitch landing page
-- Three-part presentation mode
-- Seven-stage interactive onboarding demo
-- EN / TC / SC language switching
-- Next GEM AI capability simulation and guided autofill
-- Optional personal-profile connection or manual entry
-- Company ID and director mapping concept
-- KYC document-pack and selective video-verification simulation
-- Masked fictional account details
-- AI-tailored business and personal product journeys
-- Responsive desktop and mobile layouts
+- Pitch landing page
+- Interactive customer demo (`#/demo`)
 
-## Important demo notes
+The demo uses fictional data only. Do not upload real identification or company documents.
 
-- This is a fictional prototype. It does not connect to a bank system, government records, CorpID, iAM Smart or a live LLM.
-- Inputs remain in the current browser session only.
-- The document control reads filenames for the demo; it does not upload or store file contents.
-- Do not enter real customer or personal information.
+## Publish on GitHub Pages
 
-## Run locally
+1. Open your GitHub repository.
+2. Upload all files and folders from this pack to the repository root.
+3. Commit the changes to the `main` branch.
+4. Open **Settings → Pages**.
+5. Under **Build and deployment**, select **GitHub Actions**.
+6. Open the **Actions** tab and wait for **Deploy Next GEM to GitHub Pages** to finish.
+7. Open your Pages URL, normally `https://YOUR-USERNAME.github.io/REPOSITORY-NAME/`.
 
-Requires Node.js 22 or later.
+For your current repository, the expected address is:
+
+`https://geolhc.github.io/Next-GEM/`
+
+## Replace an older version
+
+Delete or overwrite the old website files, but keep the repository itself. Upload this pack with the same folder structure, including the hidden `.github` folder.
+
+Important: upload the *contents* of `Next-GEM-GitHub-Pack`, not the outer folder.
+
+## Local preview (optional)
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open the local address shown in the terminal.
+## Notes
 
-## Build
-
-```bash
-npm run build
-```
-
-The deployable static website is generated in `dist/`.
-
-## Publish with GitHub Pages
-
-1. Create a new GitHub repository.
-2. Upload all files from this pack to the repository root.
-3. Commit or push to the `main` branch.
-4. In GitHub, open **Settings → Pages**.
-5. Under **Build and deployment**, set **Source** to **GitHub Actions**.
-6. Open the **Actions** tab and wait for “Deploy Next GEM to GitHub Pages” to finish.
-
-The workflow in `.github/workflows/deploy-pages.yml` builds and publishes the site automatically after each push to `main`.
-
-## Update an existing GitHub repository
-
-Do not create a new branch. This deployment workflow publishes only from `main`.
-
-1. Keep the repository and its `.git` history.
-2. In the repository root, replace the old website files with the contents of this pack.
-3. Make sure `.github/workflows/deploy-pages.yml`, `package.json`, `src/`, and `public/` are all at the repository root—not inside a `Next-GEM-GitHub-Pack` subfolder.
-4. Commit the changes to `main` and push.
-5. In **Settings → Pages**, set **Source** to **GitHub Actions**.
-6. In **Actions**, confirm **Deploy Next GEM to GitHub Pages** finishes with a green check.
-7. Hard-refresh the published page (`Ctrl+Shift+R`) or test it in an incognito window.
-
-You may remove old website source files that are no longer in this pack, but do not delete the repository or its `.git` folder.
-
-## Routes
-
-- Pitch: `#/`
-- Customer demo: `#/demo`
-
-Hash-based routes are used so the demo works reliably from a GitHub Pages repository subpath.
-
-## Main files
-
-- `src/Home.tsx` — landing and pitch presentation
-- `src/Demo.tsx` — interactive customer journey
-- `src/styles.css` — responsive visual system
-- `public/` — finalized branding and product images
-
-## Product links
-
-The demo contains external links to official product-information pages. Product descriptions in the prototype should be reviewed before any formal or public presentation.
+- The demo route uses `#/demo` so GitHub Pages can open it without a 404 error.
+- `vite.config.ts` uses relative asset paths, so the site works in a project repository such as `/Next-GEM/`.
+- Product links open the official external product pages.
+- Inputs remain inside the browser session and are not saved by this prototype.

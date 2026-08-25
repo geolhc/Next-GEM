@@ -1,70 +1,43 @@
-import { useEffect, useState } from "react";
-import { VisualIcon } from "./components/VisualIcon";
+"use client";
 
-const slides = [
-  { kicker: "01 · THE FRICTION", title: "A business can start today. Its banking often cannot.", copy: "Owners repeat information, prepare document packs and wait without a clear view of what happens next. The first banking experience interrupts business momentum.", stat: "TOO SLOW", label: "too many stops · too little visibility" },
-  { kicker: "02 · THE IDEA", title: "Give an eligible business its account number in three minutes.", copy: "Next GEM begins with an AI-guided conversation, reuses trusted information with permission and asks only what is essential for a secure first milestone.", stat: "3 MIN", label: "from first touch to account number" },
-  { kicker: "03 · THE VALUE", title: "Start small. Unlock more. Grow without restarting.", copy: "Documents and selective human checks strengthen assurance, while useful services open around the business’s readiness—always visible and under customer control.", stat: "START → GROW", label: "one journey · a lasting relationship" },
+import { VisualIcon } from "./VisualIcon";
+
+const pitch = [
+  { number: "01", label: "ONE TAP", title: "Start with what is already trusted.", copy: "Tap an ID. Connect permissioned data. Let AI ask only what remains.", icon: "profile" },
+  { number: "02", label: "ONE PROFILE", title: "Onboard once.", copy: "One verified profile carries identity, company context and progress forward.", icon: "link" },
+  { number: "03", label: "ONE HSBC", title: "Grow without restarting.", copy: "An account in minutes—then the right services unlock as the relationship grows.", icon: "growth" },
 ];
 
 export default function Home() {
-  const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
-  const [pitchOpen, setPitchOpen] = useState(false);
-  const [slide, setSlide] = useState(0);
-
-  useEffect(() => {
-    const onKey = (event: KeyboardEvent) => {
-      if (!pitchOpen) return;
-      if (event.key === "Escape") setPitchOpen(false);
-      if (event.key === "ArrowRight") setSlide((current) => Math.min(slides.length - 1, current + 1));
-      if (event.key === "ArrowLeft") setSlide((current) => Math.max(0, current - 1));
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [pitchOpen]);
-
-  const startPitch = () => {
-    setSlide(0);
-    setPitchOpen(true);
-  };
-
   return (
-    <main className="simpleLanding">
+    <main className="simpleLanding embeddedPitchLanding">
       <nav className="nav shell" aria-label="Primary navigation">
-        <a className="brand nextGemWordmark" href="#top" aria-label="Next GEM home"><img className="nextGemIcon" src={asset("next-gem-icon.png")} alt="" /><span className="nextGemText"><b><span className="nextWord">Next</span><em>GEM</em></b><small>GREATER · EASIER · MORE</small></span></a>
-        <div className="simpleNavActions"><button className="pitchTextButton" onClick={startPitch}>Pitch overview</button><a className="navButton" href="#/demo">Customer demo <span>↗</span></a></div>
+        <a className="brand nextGemWordmark" href="#top" aria-label="Next GEM home"><img className="nextGemIcon" src="./next-gem-icon.png" alt="" /><span className="nextGemText"><b><span className="nextWord">Next</span><em>GEM</em></b><small>GREATER · EASIER · MORE</small></span></a>
+        <a className="navButton" href="#/demo">Customer demo <span>↗</span></a>
       </nav>
 
       <section className="hero shell" id="top">
         <div className="heroGlow" />
         <div className="heroCopy">
-          <p className="eyebrow"><span /> THE WHOLE IDEA, IN ONE LINE</p>
-          <h1>Start in three minutes.<br /><em>Grow without restarting.</em></h1>
-          <p className="lead">Next GEM turns business account opening into one AI-guided journey—beginning with an account number, then unlocking more as trust grows.</p>
-          <div className="pitchLine" aria-label="Problem, idea and value">
-            <div><span>FRICTION</span><b>Waiting breaks momentum</b></div><i>→</i>
-            <div><span>START</span><b>Account number in 3 minutes</b></div><i>→</i>
-            <div><span>GROW</span><b>More value, one journey</b></div>
-          </div>
-          <div className="heroActions"><button className="primary" onClick={startPitch}>Start the pitch <span>→</span></button><a className="secondary demoLink" href="#/demo">Go straight to demo <span>↗</span></a></div>
-          <p className="pitchTiming"><b>Present the idea</b> Problem · possibility · business value</p>
+          <p className="eyebrow"><span /> THE BUSINESS IDEA</p>
+          <h1>From 30 days<br /><em>to three minutes.</em></h1>
+          <p className="lead">Opening a business account should not feel like waiting 30 days for a reply.</p>
+          <p className="pitchHook"><b>One Tap. One Profile. One HSBC.</b> Turn a 30-day heartbreak into a three-minute match.</p>
+          <div className="heroActions"><a className="primary" href="#/demo">Experience the journey <span>→</span></a></div>
+          <p className="pitchTiming"><b>Onboard once.</b> Grow everywhere.</p>
         </div>
 
         <div className="heroVisual brandHeroVisual" aria-label="Next GEM holographic project identity">
           <div className="brandHalo" />
-          <img className="brandHeroImage" src={asset("next-gem-icon.png")} alt="Next GEM holographic gem" />
+          <img className="brandHeroImage brandHeroLockup" src="./next-gem-full.png" alt="Next GEM — Greater, Easier, More" />
           <div className="brandPromise"><span><VisualIcon name="account" /></span><p><b>ACCOUNT NUMBER GOAL</b><strong>3 MIN</strong></p><i>READY TO MOVE</i></div>
         </div>
 
-        <div className="heroFoot"><span>ONE IDEA · ONE JOURNEY</span><span>AI-GUIDED · CUSTOMER CONTROLLED</span></div>
+        <div className="landingPitch" aria-label="Next GEM pitch">
+          {pitch.map((item) => <article key={item.number}><div className="pitchIcon"><VisualIcon name={item.icon} /></div><p>{item.number} · {item.label}</p><h2>{item.title}</h2><span>{item.copy}</span></article>)}
+        </div>
+        <div className="landingClose"><strong>Win the first date.</strong><span>Build a trusted relationship customers want to keep.</span><a href="#/demo">Open customer demo →</a></div>
       </section>
-
-      {pitchOpen && <div className="pitchOverlay" role="dialog" aria-modal="true" aria-label="Sharp Next GEM pitch mode">
-        <button className="closePitch" onClick={() => setPitchOpen(false)} aria-label="Close pitch">×</button>
-        <div className="pitchProgress">{slides.map((_, index) => <i key={index} className={index <= slide ? "done" : ""} />)}</div>
-        <div className="pitchContent" key={slide}><p className="eyebrow"><span /> {slides[slide].kicker}</p><h2>{slides[slide].title}</h2><p className="pitchCopy">{slides[slide].copy}</p><div className="pitchStat"><strong>{slides[slide].stat}</strong><span>{slides[slide].label}</span></div></div>
-        <div className="pitchNav"><span>{String(slide + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span><div><button onClick={() => setSlide((current) => Math.max(0, current - 1))} disabled={slide === 0}>←</button>{slide === slides.length - 1 ? <a className="finish" href="#/demo">Start demo →</a> : <button onClick={() => setSlide((current) => current + 1)}>→</button>}</div></div>
-      </div>}
     </main>
   );
 }
