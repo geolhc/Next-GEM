@@ -15,8 +15,8 @@ const futureCards = [
 ];
 
 const productSolutions: Array<{ label: string; icon?: string; image?: string }> = [
-  { label: "Business Credit", image: "/business-credit-card.png" },
-  { label: "Business Debit", image: "/business-debit-card.png" },
+  { label: "Business Credit", image: "./business-credit-card.png" },
+  { label: "Business Debit", image: "./business-debit-card.png" },
   { label: "Payments", icon: "account" },
   { label: "FX", icon: "global" },
   { label: "Trade", icon: "trade" },
