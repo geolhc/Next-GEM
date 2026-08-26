@@ -36,19 +36,19 @@ const journeys = {
 
 const journeyPhases = {
   EN: [
-    { title: "One Tap", detail: "Welcome · Business · NFC identity", end: 2 },
-    { title: "One Profile", detail: "Company · Documents · Verification", end: 4 },
-    { title: "One HSBC", detail: "Account · Grow", end: 6 },
+    { title: "One Tap", detail: "SPARK · Scan & start", end: 2 },
+    { title: "One Profile", detail: "TRUST · Connect & verify", end: 4 },
+    { title: "One HSBC", detail: "GROW · Activate & deepen", end: 6 },
   ],
   TC: [
-    { title: "One Tap", detail: "歡迎 · 業務 · NFC 身份", end: 2 },
-    { title: "One Profile", detail: "公司 · 文件 · 驗證", end: 4 },
-    { title: "One HSBC", detail: "賬戶 · 成長", end: 6 },
+    { title: "One Tap", detail: "SPARK · 掃描及開始", end: 2 },
+    { title: "One Profile", detail: "TRUST · 連接及驗證", end: 4 },
+    { title: "One HSBC", detail: "GROW · 啟用及深化", end: 6 },
   ],
   SC: [
-    { title: "One Tap", detail: "欢迎 · 业务 · NFC 身份", end: 2 },
-    { title: "One Profile", detail: "公司 · 文件 · 验证", end: 4 },
-    { title: "One HSBC", detail: "账户 · 成长", end: 6 },
+    { title: "One Tap", detail: "SPARK · 扫描及开始", end: 2 },
+    { title: "One Profile", detail: "TRUST · 连接及验证", end: 4 },
+    { title: "One HSBC", detail: "GROW · 启用及深化", end: 6 },
   ],
 };
 
@@ -87,6 +87,7 @@ function getAiGuidance(name: string, language: Language) {
 
 export default function DemoPage() {
   const [language, setLanguage] = useState<Language>("EN");
+  const [brightMode, setBrightMode] = useState(false);
   const [deviceMode, setDeviceMode] = useState<DeviceMode>("web");
   const [step, setStep] = useState(0);
   const [preferredName, setPreferredName] = useState("");
@@ -321,15 +322,15 @@ export default function DemoPage() {
   };
 
   return (
-    <main className="demoPage">
+    <main className={`demoPage ${brightMode ? "brightMode" : ""}`}>
       <header className="demoHeader">
         <a className="brand nextGemWordmark" href="#/" aria-label="Back to Next GEM pitch"><img className="nextGemIcon" src="./next-gem-icon.png" alt="" /><span className="nextGemText"><b><span className="nextWord">Next</span><em>GEM</em></b><small>GREATER · EASIER · MORE</small></span></a>
-        <div className="demoHeaderActions"><span>{t("AI demo · No data saved", "AI 示範 · 不儲存資料", "AI 演示 · 不储存资料")}</span><div className="languageSwitch" role="group" aria-label="Demo language">{(["EN", "TC", "SC"] as Language[]).map((item) => <button key={item} className={language === item ? "active" : ""} onClick={() => setLanguage(item)} aria-pressed={language === item}>{item}</button>)}</div><a href="#/">{t("Pitch", "簡介", "简介")}</a></div>
+        <div className="demoHeaderActions"><span>{t("AI demo · No data saved", "AI 示範 · 不儲存資料", "AI 演示 · 不储存资料")}</span><button className="modeToggle demoModeToggle" onClick={() => setBrightMode((value) => !value)} aria-label={`Switch to ${brightMode ? "dark" : "bright"} presentation mode`}><i>{brightMode ? "☾" : "☀"}</i><b>{brightMode ? "Dark" : "Bright"}</b></button><div className="languageSwitch" role="group" aria-label="Demo language">{(["EN", "TC", "SC"] as Language[]).map((item) => <button key={item} className={language === item ? "active" : ""} onClick={() => setLanguage(item)} aria-pressed={language === item}>{item}</button>)}</div><a href="#/">{t("Pitch", "簡介", "简介")}</a></div>
       </header>
 
       <div className="demoShell">
         <aside className="demoRail">
-          <div><p className="demoRailKicker">{t("THE 3-MINUTE JOURNEY", "3 分鐘旅程", "3 分钟旅程")}</p><h1>One Tap.<br />One Profile.<br /><em>One HSBC.</em></h1></div>
+          <div><p className="demoRailKicker">{t("WELCOME · THE 3-MINUTE JOURNEY", "歡迎 · 3 分鐘旅程", "欢迎 · 3 分钟旅程")}</p><h1>One Tap.<br />One Profile.<br /><em>One HSBC.</em></h1><p className="demoRelationshipLine">Spark <i>→</i> Trust <i>→</i> Grow</p></div>
           <ol className="phaseTimeline">{phases.map((phase, index) => <li key={phase.title} className={index === activePhase ? "current" : index < activePhase ? "complete" : ""}><i>{index < activePhase ? "✓" : index + 1}</i><span><b>{phase.title}</b><small>{phase.detail}</small></span></li>)}</ol>
           <div className="demoTrust"><span>♡</span><p><b>{t("You stay in control", "你一直掌握決定權", "你一直掌握决定权")}</b></p></div>
         </aside>
