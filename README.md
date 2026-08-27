@@ -1,19 +1,25 @@
 # Next GEM
 
-Pitch landing page and interactive customer demo for a future Commercial Banking onboarding concept.
+Interactive commercial-banking onboarding pitch and customer demo.
 
-## Live structure
+- Pitch deck: `/Next-GEM/`
+- Customer demo: `/Next-GEM/demo/`
+- Presentation controls: Back, Next, arrow keys, Space, Home and End
+- Demo modes: Web/App, Bright/Dark, EN/繁中/简中
 
-- Landing pitch: repository root
-- Customer demo: `#/demo`
-- GitHub Pages build: `docs/`
+## Publish with GitHub Pages
 
-## Local check
+This repository includes an automatic deployment workflow. Upload all files to the root of the `main` branch, then enable **Settings → Pages → Source: GitHub Actions**.
+
+Full instructions: [UPLOAD-GUIDE.md](UPLOAD-GUIDE.md)
+
+## Local preview
+
+Requires Node.js 22.13 or later.
 
 ```bash
-npm ci
-npm run build
+npm install
 npm run dev
 ```
 
-All demo information is fictional and masked. The AI, NFC, camera, verification and data-source interactions are capability simulations only.
+The public prototype uses fictional sample data and does not claim production banking performance.
